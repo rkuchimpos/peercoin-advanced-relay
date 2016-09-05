@@ -1117,6 +1117,8 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
         ss << "(" << boost::algorithm::join(comments, "; ") << ")";
     ss << "/";
     ss << "Peercoin:" << FormatVersion(PPCOIN_VERSION);
+    ss << "/";
+    ss << "PARS:" << FormatVersion(PARS_VERSION);
     ss << "(" << CLIENT_BUILD << ")/";
     return ss.str();
 }
