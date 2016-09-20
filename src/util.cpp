@@ -1104,7 +1104,10 @@ string FormatVersion(int nVersion)
 
 string FormatFullVersion()
 {
-    return CLIENT_BUILD;
+    std::ostringstream ss;
+    ss << "PARS:" << FormatVersion(PARS_VERSION);
+    ss << "(" << CLIENT_BUILD << ")/";
+    return ss.str();
 }
 
 // Format the subversion field according to BIP 14 spec (https://en.bitcoin.it/wiki/BIP_0014)
