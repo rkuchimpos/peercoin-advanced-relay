@@ -12,6 +12,8 @@
 //
 
 // These need to be macro's, as version.cpp's voodoo requires it
+
+// bitcoin version - reference for code tracking
 #define CLIENT_VERSION_MAJOR       0
 #define CLIENT_VERSION_MINOR       6
 #define CLIENT_VERSION_REVISION    3
@@ -27,7 +29,7 @@ extern const std::string CLIENT_NAME;
 extern const std::string CLIENT_BUILD;
 extern const std::string CLIENT_DATE;
 
-// ppcoin version - intended for display purpose ONLY
+// ppcoin version - reference for code tracking
 #define PPCOIN_VERSION_MAJOR       0
 #define PPCOIN_VERSION_MINOR       5
 #define PPCOIN_VERSION_REVISION    4
@@ -38,6 +40,18 @@ static const int PPCOIN_VERSION =
                          +   10000 * PPCOIN_VERSION_MINOR
                          +     100 * PPCOIN_VERSION_REVISION
                          +       1 * PPCOIN_VERSION_BUILD;
+
+// PARS version - intended for display purpose only
+#define PARS_VERSION_MAJOR       0
+#define PARS_VERSION_MINOR       5
+#define PARS_VERSION_REVISION    4
+#define PARS_VERSION_BUILD       0
+
+static const int PARS_VERSION =
+                           1000000 * PARS_VERSION_MAJOR
+                         +   10000 * PARS_VERSION_MINOR
+                         +     100 * PARS_VERSION_REVISION
+                         +       1 * PARS_VERSION_BUILD;
 
 //
 // network protocol versioning

@@ -553,6 +553,10 @@ bool AppInit2(int argc, char* argv[])
     const char* pszP2SH = "/P2SH/";
     COINBASE_FLAGS << std::vector<unsigned char>(pszP2SH, pszP2SH+strlen(pszP2SH));
 
+    // Add subversion signature to coinbase
+    auto subVer = FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<std::string>());
+    COINBASE_FLAGS << std::vector<unsigned char>(subVer.cbegin(), subVer.cend());
+
     if (!fNoListen)
     {
         std::string strError;
