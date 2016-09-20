@@ -1106,7 +1106,7 @@ string FormatFullVersion()
 {
     std::ostringstream ss;
     ss << "PARS:" << FormatVersion(PARS_VERSION);
-    ss << "(" << CLIENT_BUILD << ")/";
+    ss << "(" << CLIENT_BUILD << ")";
     return ss.str();
 }
 
