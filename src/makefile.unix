@@ -83,9 +83,21 @@ LIBS+= \
 
 
 #DEBUGFLAGS=-g
-CXXFLAGS=-O2
-xCXXFLAGS=-pthread -Wall -Wextra -Wno-sign-compare -Wno-invalid-offsetof -Wno-unused-parameter -Wformat -Wformat-security \
-    $(DEBUGFLAGS) $(DEFS) $(HARDENING) $(CXXFLAGS)
+CXXFLAGS=-O2 -std=c++11
+xCXXFLAGS= \
+    -pthread \
+    -Wall \
+    -Wextra \
+    -Werror \
+    -Wno-sign-compare \
+    -Wno-invalid-offsetof \
+    -Wno-unused-parameter \
+    -Wformat \
+    -Wformat-security \
+    $(DEBUGFLAGS) \
+    $(DEFS) \
+    $(HARDENING) \
+    $(CXXFLAGS)
 
 OBJS= \
     obj/version.o \

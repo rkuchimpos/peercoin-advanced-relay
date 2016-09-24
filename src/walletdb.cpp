@@ -379,7 +379,7 @@ void ThreadFlushWalletDB(void* parg)
                         dbenv.lsn_reset(strFile.c_str(), 0);
 
                         mapFileUseCount.erase(mi++);
-                        printf("Flushed wallet.dat %"PRI64d"ms\n", GetTimeMillis() - nStart);
+                        printf("Flushed wallet.dat %" PRI64d "ms\n", GetTimeMillis() - nStart);
                     }
                 }
             }
@@ -389,41 +389,7 @@ void ThreadFlushWalletDB(void* parg)
 
 bool BackupWallet(const CWallet& wallet, const string& strDest)
 {
-    if (!wallet.fFileBacked)
-        return false;
-    while (!fShutdown)
-    {
-        {
-            LOCK(cs_db);
-            if (!mapFileUseCount.count(wallet.strWalletFile) || mapFileUseCount[wallet.strWalletFile] == 0)
-            {
-                // Flush log data to the dat file
-                CloseDb(wallet.strWalletFile);
-                dbenv.txn_checkpoint(0, 0, 0);
-                dbenv.lsn_reset(wallet.strWalletFile.c_str(), 0);
-                mapFileUseCount.erase(wallet.strWalletFile);
-
-                // Copy wallet.dat
-                filesystem::path pathSrc = GetDataDir() / wallet.strWalletFile;
-                filesystem::path pathDest(strDest);
-                if (filesystem::is_directory(pathDest))
-                    pathDest /= wallet.strWalletFile;
-
-                try {
-#if BOOST_VERSION >= 104000
-                    filesystem::copy_file(pathSrc, pathDest, filesystem::copy_option::overwrite_if_exists);
-#else
-                    filesystem::copy_file(pathSrc, pathDest);
-#endif
-                    printf("copied wallet.dat to %s\n", pathDest.string().c_str());
-                    return true;
-                } catch(const filesystem::filesystem_error &e) {
-                    printf("error copying wallet.dat to %s - %s\n", pathDest.string().c_str(), e.what());
-                    return false;
-                }
-            }
-        }
-        Sleep(100);
-    }
+    printf("BackupWallet disabled on account of filesystem::copy_file not compiling under c++11.");
+    printf("Please stop your client and manually backup your wallet file.");
     return false;
 }
