@@ -2296,7 +2296,7 @@ bool LoadBlockIndex(bool fAllowNew)
         nStakeMinAge = 1;
         nCoinbaseMaturity = 1; 
         bnInitialHashTarget = CBigNum(~uint256(0) >> 29);
-        nModifierInterval = 60 * 20; // test net modifier interval is 20 minutes
+        nModifierInterval = 1;
     }
 
     printf("%s Network: genesis=0x%s nBitsLimit=0x%08x nBitsInitial=0x%08x nStakeMinAge=%d nCoinbaseMaturity=%d nModifierInterval=%d\n",
